@@ -1,0 +1,8 @@
+baseURL: https://johanhendrikehlers.com/
+languageCode: en-us
+title: Johan Hendrik Ehlers
+theme: custom
+module:
+  mounts:
+    - source: node_modules/bootstrap/dist/js
+      target: assets

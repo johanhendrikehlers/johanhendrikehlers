@@ -1,0 +1,23 @@
+{{ $opts := dict 
+    "transpiler" "dartsass"
+    "targetPath" "css/style.css"
+    "includePaths" (slice "node_modules/bootstrap/scss") }}
+  {{- with resources.Get "css/main.sass" | toCSS $opts | minify | fingerprint }}
+    {{- if eq hugo.Environment "development" }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}" />
+    {{- else }}
+      {{- with . | minify | fingerprint }}
+      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" />
+      {{- end }}
+  {{- end }}
+{{- end }}
+{{- $faFiles := slice "fontawesome" "brands" "solid" }}
+{{- range $faFiles }}
+  {{- $name := printf "css/%s.css" . }}
+  {{- if eq hugo.Environment "production" }}
+    {{- $name = printf "css/%s.min.css" . }}  
+  {{- end }}
+  {{- with resources.Get $name }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" />
+  {{- end }}
+{{- end }}

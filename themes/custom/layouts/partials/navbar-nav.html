@@ -1,0 +1,69 @@
+{{- /*
+Renders a menu for the given menu ID.
+
+@context {page} page The current page.
+@context {string} menuID The menu ID.
+
+@example: {{ partial "navbar-nav.html" (dict "menuID" "main" "page" .) }}
+*/}}
+
+{{- $page := .page }}
+{{- $menuID := .menuID }}
+
+{{- with index site.Menus $menuID }}
+  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+    {{- partial "inline/navbar-nav/walk-1.html" (dict "page" $page "menuEntries" .) }}
+  </ul>
+{{- end }}
+
+{{- /* walk level 1 items (top) */}}
+{{- define "partials/inline/navbar-nav/walk-1.html" }}
+{{- $page := .page }}
+  {{- range .menuEntries }}
+    {{- $liClass := "nav-item" }}
+    {{- $aClass := "nav-link" }}
+    {{- $name := .Name }}
+    {{- with .Identifier }}
+      {{- $name = . }}
+    {{- end }}
+    {{- if .HasChildren }}
+      {{- $liClass = print $liClass " dropdown" }}
+      {{- $aClass = print $aClass " dropdown-toggle" }}
+    {{- end }}
+    {{- if or ($page.IsMenuCurrent .Menu .) ($page.HasMenuCurrent .Menu .) }}
+      {{- $aClass = print $aClass " active" }}
+    {{- end }}
+    <li class="{{ $liClass }}">
+      <a class="{{ $aClass }}" href="{{.URL}}" {{- if .Children }} data-bs-toggle="dropdown" {{- end}}>
+        {{ $name }}
+      </a>
+      {{- with .Children }}
+      <ul class="dropdown-menu">
+        {{- partial "inline/navbar-nav/walk-2.html" (dict "page" $page "menuEntries" .) }}
+      </ul>
+    {{- end }}
+    </li>
+  {{- end }}
+{{- end }}
+
+{{- /* walk level 2 items */}}
+{{- define "partials/inline/navbar-nav/walk-2.html" }}
+  {{- $page := .page }}
+  {{- range .menuEntries }}
+    {{- $active := false }}
+    {{- $active = or $active ($page.IsMenuCurrent .Menu .) }}
+    {{- $active = or $active ($page.HasMenuCurrent .Menu .) }}
+    {{- $name := .Name }}
+    {{- with .Identifier }}
+      {{- $name = . }}
+    {{- end }}
+    <li>
+      <a class="dropdown-item {{- if $active }} active{{- end }}" href="{{ .URL }}">
+        {{ $name }}
+        {{- if $active }}
+          <span class="visually-hidden">(current)</span>
+        {{- end }}
+      </a>
+    </li>
+  {{- end }}
+{{- end }}

@@ -1,0 +1,53 @@
+{{- /*
+Renders a menu for the given menu ID.
+
+@context {page} page The current page.
+@context {string} menuID The menu ID.
+
+@example: {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+*/}}
+
+{{- $page := .page }}
+{{- $menuID := .menuID }}
+
+{{- with index site.Menus $menuID }}
+  <ul class="list-unstyled ps-0">
+    {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+  </ul>
+{{- end }}
+
+{{- define "partials/inline/menu/walk.html" }}
+  {{- $page := .page }}
+  {{- range .menuEntries }}
+    {{- $classes := slice "btn" "btn-toggle" "d-inline-flex" "align-items-center" "rounded" "border-0" }}
+    {{- $name := .Name }}
+    {{- with .Identifier }}
+      {{- with T . }}
+        {{- $name = . }}
+      {{- end }}
+    {{- end }}
+    <li class="mb-1">
+      <a
+        class="{{ delimit $classes " " }}"
+        {{- if .HasChildren }}
+          data-bs-toggle="collapse"
+          data-bs-target="#{{ $name }}"
+        {{- end }}
+        href="{{ .URL }}"
+        aria-expanded="false"
+      >
+        <i class="fa-fw {{ .Params.icon }} me-1"></i>
+        {{ $name }}
+      </a>
+      {{- if .HasChildren }}
+        {{- with .Children }}
+          <div class="collapse" id="{{ $name }}">
+            <ul class="list-unstyled">
+              {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+            </ul>
+          </div>
+        {{- end }}
+      {{- end }}
+    </li>
+  {{- end }}
+{{- end }}
