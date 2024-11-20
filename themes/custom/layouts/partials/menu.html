@@ -11,7 +11,7 @@ Renders a menu for the given menu ID.
 {{- $menuID := .menuID }}
 
 {{- with index site.Menus $menuID }}
-  <ul class="list-unstyled ps-0">
+  <ul class="list-unstyled ps-0 partials-menu">
     {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
   </ul>
 {{- end }}
@@ -19,7 +19,6 @@ Renders a menu for the given menu ID.
 {{- define "partials/inline/menu/walk.html" }}
   {{- $page := .page }}
   {{- range .menuEntries }}
-    {{- $classes := slice "btn" "btn-toggle" "d-inline-flex" "align-items-center" "rounded" "border-0" }}
     {{- $name := .Name }}
     {{- with .Identifier }}
       {{- with T . }}
@@ -28,25 +27,22 @@ Renders a menu for the given menu ID.
     {{- end }}
     <li class="mb-1">
       <a
-        class="{{ delimit $classes " " }}"
+        class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
         {{- if .HasChildren }}
           data-bs-toggle="collapse"
           data-bs-target="#{{ $name }}"
+          aria-expanded="{{ $page.HasMenuCurrent .Menu . }}"
         {{- end }}
         href="{{ .URL }}"
-        aria-expanded="false"
       >
-        <i class="fa-fw {{ .Params.icon }} me-1"></i>
         {{ $name }}
       </a>
       {{- if .HasChildren }}
-        {{- with .Children }}
-          <div class="collapse" id="{{ $name }}">
+          <div class="collapse {{ if $page.HasMenuCurrent .Menu . }}show{{ end }}" id="{{ $name }}">
             <ul class="list-unstyled">
-              {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .) }}
+              {{- partial "inline/menu/walk.html" (dict "page" $page "menuEntries" .Children ) }}
             </ul>
           </div>
-        {{- end }}
       {{- end }}
     </li>
   {{- end }}

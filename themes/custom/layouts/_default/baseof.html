@@ -10,11 +10,29 @@
     {{ partial "navbar.html" . }}
     <div class="container">
       <div class="row">
-        <div class="col-sm-3 menu-sidebar">
-          {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+        <div class="col-lg-3">
+          <div
+            id="contentMenu"
+            class="offcanvas-lg offcanvas-start"
+            aria-labelledby="contentMenuLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="contentMenuLabel">Menu</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                data-bs-target="#contentMenu"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+            </div>
+          </div>
         </div>
-        <main class="col-sm-6">{{ block "main" . }}{{ end }}</main>
-        <div class="col-sm-3">
+        <main class="col-lg-6">{{ block "main" . }}{{ end }}</main>
+        <div class="col-lg-3">
           <h1>A quick summary of this page:</h1>
           Hier könnte Ihre Werbung stehen.
         </div>
