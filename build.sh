@@ -1,4 +1,4 @@
 #!/bin/bash
 
 npm install
-hugo build
+hugo version
