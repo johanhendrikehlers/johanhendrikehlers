@@ -3,94 +3,62 @@
   lang="en-us"
   dir="ltr"
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 <title>Categories | Johan Hendrik Ehlers</title>
 
-      <link rel="stylesheet" href="/css/style.min.05062f90611f760fecbd8fde231db66279139c6ecbcf10bd4b4041d9c8a9a83d.css" />
+      <link rel="stylesheet" href="/css/style.min.98c632c18668866a358dfa69acb35f47aa6a1aa21c744d1113d7b7258ebfd497.min.98c632c18668866a358dfa69acb35f47aa6a1aa21c744d1113d7b7258ebfd497.css" integrity="sha256-mMYywYZohmo1jfpprLNfR6pqGqIcdE0RE9e3JY6/1Jc=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/fontawesome.min.css" />
+  <link rel="stylesheet" href="/css/brands.min.css" />
+  <link rel="stylesheet" href="/css/solid.min.css" />
 
-      <script src="/js/main.js"></script>
+      <script src="/js/main.ff6c9872c07bee927a99652bf9962a4f44995a91c216be78cbfed824f5978ad5.js" integrity="sha256-/2yYcsB77pJ6mWUr&#43;ZYqT0SZWpHCFr54y/7YJPWXitU=" crossorigin="anonymous"></script>
 
   </head>
   <body>
     <header class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
-  <nav class="container-xxl bd-gutter flex-wrap flex-lg-nowrap">
-    <a class="navbar-brand" href="#">JohanHendrikEhlers.com</a>
+  <nav class="container-lg bd-gutter flex-wrap flex-lg-nowrap">
+    <a class="navbar-brand" href="#">Johan Hendrik Ehlers</a>
     <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasNavbar"
-      aria-controls="offcanvasNavbar"
+      data-bs-target="#contentMenu"
+      aria-controls="contentMenu"
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div
-      class="offcanvas offcanvas-end"
-      tabindex="-1"
-      id="offcanvasNavbar"
-      aria-labelledby="offcanvasNavbarLabel"
-    >
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="offcanvas-body">
-        
-  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-    <li class="nav-item">
-      <a class="nav-link" href="/">
-        Home
-      </a>
-    </li>
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="/posts/" data-bs-toggle="dropdown">
-        Posts
-      </a>
-      <ul class="dropdown-menu">
-    <li>
-      <a class="dropdown-item" href="/posts/post-1/">
-        Post 1
-      </a>
-    </li>
-    <li>
-      <a class="dropdown-item" href="/posts/post-2/">
-        Post 2
-      </a>
-    </li>
-      </ul>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/tags/">
-        Tags
-      </a>
-    </li>
-  </ul>
-        
-      </div>
-    </div>
   </nav>
 </header>
 
     <div class="container">
       <div class="row">
-        <div class="col-sm-3 menu-sidebar">
-          
-  <ul class="list-unstyled ps-0">
+        <div class="col-lg-3">
+          <div
+            id="contentMenu"
+            class="offcanvas-lg offcanvas-start"
+            aria-labelledby="contentMenuLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="contentMenuLabel">Menu</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                data-bs-target="#contentMenu"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="offcanvas-body">
+              
+  <ul class="list-unstyled ps-0 partials-menu">
     <li class="mb-1">
       <a
         class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
         href="/"
-        aria-expanded="false"
       >
-        <i class="fa-fw fa-solid fa-house me-1"></i>
         Home
       </a>
     </li>
@@ -99,21 +67,18 @@
         class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
           data-bs-toggle="collapse"
           data-bs-target="#Posts"
+          aria-expanded="false"
         href="/posts/"
-        aria-expanded="false"
       >
-        <i class="fa-fw  me-1"></i>
         Posts
       </a>
-          <div class="collapse" id="Posts">
+          <div class="collapse " id="Posts">
             <ul class="list-unstyled">
     <li class="mb-1">
       <a
         class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
         href="/posts/post-1/"
-        aria-expanded="false"
       >
-        <i class="fa-fw  me-1"></i>
         Post 1
       </a>
     </li>
@@ -121,9 +86,7 @@
       <a
         class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
         href="/posts/post-2/"
-        aria-expanded="false"
       >
-        <i class="fa-fw  me-1"></i>
         Post 2
       </a>
     </li>
@@ -134,21 +97,20 @@
       <a
         class="btn btn-toggle d-inline-flex align-items-center rounded border-0"
         href="/tags/"
-        aria-expanded="false"
       >
-        <i class="fa-fw  me-1"></i>
         Tags
       </a>
     </li>
   </ul>
-
+            </div>
+          </div>
         </div>
-        <main class="col-sm-6">
+        <main class="col-lg-6">
   <h1>Categories</h1>
   
   
 </main>
-        <div class="col-sm-3">
+        <div class="col-lg-3">
           <h1>A quick summary of this page:</h1>
           Hier könnte Ihre Werbung stehen.
         </div>
