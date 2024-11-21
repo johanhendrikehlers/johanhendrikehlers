@@ -1,5 +1,11 @@
 ## Hi there 👋
 
+### Ideas for some future posts
+
+- Describe your approach to testing and improving QA
+- What frameworks have you worked with? 
+
+
 <!--
 **johanhendrikehlers/johanhendrikehlers** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
