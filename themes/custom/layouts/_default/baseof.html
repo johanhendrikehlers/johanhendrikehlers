@@ -35,11 +35,33 @@
           <div class="bg-white mt-3 px-5 py-4 pe-5 rounded">
             {{ block "main" . }}{{ end }}
           </div>
+          <p class="text-center mt-3">
+            &copy; {{ now.Format "2006" }} {{ .Site.Title }}
+          </p>
+          <p class="text-center">
+            <a
+              class="me-2"
+              href="https://twitter.com/jhehlers"
+              target="_blank"
+              rel="noopener"
+              ><i class="fab fa-twitter fa-2x"></i
+            ></a>
+            <a
+              class="me-2"
+              href="https://www.linkedin.com/in/johanhendrikehlers"
+              target="_blank"
+              rel="noopener"
+              ><i class="fab fa-linkedin fa-2x"></i
+            ></a>
+            <a
+              href="https://github.com/johanhendrikehlers"
+              target="_blank"
+              rel="noopener"
+              ><i class="fab fa-github fa-2x"></i
+            ></a>
+          </p>
         </main>
-        <div class="col-lg-2 mt-4">
-          <h6>A quick summary of this page:</h6>
-          Hier könnte Ihre Werbung stehen.
-        </div>
+        <div class="col-lg-2 mt-4"></div>
       </div>
     </div>
     <footer>
@@ -49,9 +71,6 @@
             <div>
               {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
             </div>
-            <p class="text-center">
-              &copy; {{ now.Format "2006" }} {{ .Site.Title }}
-            </p>
           </div>
         </div>
       </div>
