@@ -2,7 +2,14 @@ baseURL: https://johanhendrikehlers.com/
 languageCode: en-us
 title: Johan Hendrik Ehlers
 theme: custom
+enableEmoji: true
 module:
   mounts:
     - source: node_modules/bootstrap/dist/js
       target: assets
+markup:
+  goldmark:
+    parser:
+      attribute:
+        block: true
+        title: true
